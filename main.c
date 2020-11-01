@@ -24,7 +24,8 @@ int save_file(char * filename) {
   fgets(buff,100000,tmp_fp);
   FILE *fp;
   fp = fopen(filename, "a");
-  
+  fprintf(fp, "%s", buff);
+  return 0;
 }
 int read_file(char * filename) {
   FILE *fp;
@@ -50,6 +51,9 @@ int main(int argc, char *argv[]) {
 	write_file(argv[1]);
       }
     }
+    if ((b = getchar()) == 's') {
+      if ((b = getchar()) == '\n') {
+	save_file(argv[1]);
   }
        
 }
