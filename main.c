@@ -6,7 +6,7 @@ int write_file(char * filename) {
   char *in_str = malloc(1);
   int c;
   int i = 0;
-  fp = fopen(filename, "a");
+  fp = fopen("tmp", "w");
   if (!fp) {
     return 1;
   }
@@ -15,20 +15,25 @@ int write_file(char * filename) {
     in_str = realloc(in_str, i+1);
   }
   in_str[i] = '\0';
-  fprintf(fp,"%s", in_str);  
+  fputs(in_str, fp);
+  fclose(fp);
   return 0;
 }
 int save_file(char * filename) {
-  char tmp_file_name[] = "tmp_fp";
-  char buff[100000];
+  char buff[10000];
   FILE *fp;
-  FILE *f;
+  FILE *fp2;
   int c;
-  fp = fopen(tmp_file_name, "a");
-  f = fopen(filename, "a");
-  fgets(buff,100000,fp);
-  printf("%s", buff);
-  fprintf(f,"%s",buff);
+  int i = 0;
+  char *w_str = malloc(1);
+  fp = fopen("tmp", "r");
+  fp2 = fopen(filename, "a");
+  while ((c = fgetc(fp)) != EOF) {
+    w_str[i++] = c;
+    w_str = realloc(w_str, i+1);
+  }
+  w_str[i] = '\0';
+  fputs(w_str, fp2);
   return 0;
 }
 int read_file(char * filename) {
@@ -54,6 +59,8 @@ int main(int argc, char *argv[]) {
       write_file(argv[1]);
     }
   }
+  save_file(argv[1]);
+  printf("End of program!\n");
     
   
 }
