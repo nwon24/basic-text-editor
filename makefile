@@ -3,4 +3,4 @@ CFLAGS=-I
 
 
 editor: editor_functions.o editor.o
-  ($CC) editor.c editor_functions.c -o editor
+  $(CC) -o editor editor.c editor_functions.c 
