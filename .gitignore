@@ -1,3 +1,5 @@
 # Ignore object files
 *.o
+# Text files
+*.txt
 
