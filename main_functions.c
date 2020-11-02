@@ -55,7 +55,7 @@ int command_mode(char * filename) {
     write_file(filename);
     printf("You have written to a file. Your changes are currently saved in a temporary location. Type s to save.\n");
     read(STDIN_FILENO, &ch2, 1);
-    if (ch2 == SAVE_FILE_COMMAND && (ch1 = fgetc(stdin)) == 0x0A) {
+    if (ch2 == SAVE_FILE_COMMAND) {
       save_file(filename);
       return 0;
     }
