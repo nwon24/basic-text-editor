@@ -13,7 +13,7 @@ int write_file(char * filename) {
     in_str[i++] = c;
     in_str = realloc(in_str, i+1);
   }
-  printf("\nEnd of append!");
+  printf("End of append!\n");
   in_str[i] = '\0';
   fputs(in_str, fp);
   fclose(fp);
@@ -37,7 +37,7 @@ int save_file(char * filename) {
   fclose(fp);
   fclose(fp2);
   remove("tmp");
-  printf("\nFile saved!");
+  printf("File saved!\n");
   return 0;
 }
 int read_file(char * filename) {
@@ -55,12 +55,12 @@ int read_file(char * filename) {
   return 0;
 }
 int command_mode(char * filename) {
-  printf("You are in command mode. \n");
+  printf("You are in command mode.\n");
   char ch1, ch2;
   read(STDIN_FILENO, &ch1, 1);
   if (ch1 == WRITE_FILE_COMMAND) {
     write_file(filename);
-    printf("\nYou have written to a file. Type s to save. \n");
+    printf("\nYou have written to a file. Type s to save.\n");
     read(STDIN_FILENO, &ch2, 1);
     if (ch2 == SAVE_FILE_COMMAND) {
       save_file(filename);
