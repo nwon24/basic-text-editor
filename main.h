@@ -15,3 +15,4 @@ int save_file(char * filename);
 int command_mode(char * filename);
 int copy_file(char * filename);
 int open_file(char * filename);
+int part_copy(char * filename, int num);
