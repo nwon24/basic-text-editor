@@ -1,4 +1,4 @@
-#include "editor.h"
+#include "main.h"
 
 int write_file(char * filename) {
   FILE *fp;
@@ -9,10 +9,11 @@ int write_file(char * filename) {
   if (!fp) {
     return 1;
   }
-  while ((c = getchar()) != EOF) {
+  while ((c = fgetc(stdin)) != EOF) {
     in_str[i++] = c;
     in_str = realloc(in_str, i+1);
   }
+  printf("\nEnd of append!");
   in_str[i] = '\0';
   fputs(in_str, fp);
   fclose(fp);
@@ -33,6 +34,9 @@ int save_file(char * filename) {
   }
   w_str[i] = '\0';
   fputs(w_str, fp2);
+  fclose(fp);
+  fclose(fp2);
+  printf("\nFile saved!");
   return 0;
 }
 int read_file(char * filename) {
