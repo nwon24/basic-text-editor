@@ -6,6 +6,7 @@
 #define QUIT_PROGRAM_COMMAND 'q'
 #include </usr/include/curses.h>
 #include </usr/include/ncurses.h>
+#include <unistd.h>
 
 int read_file(char * filename);
 int write_file(char * filename);

@@ -36,6 +36,7 @@ int save_file(char * filename) {
   fputs(w_str, fp2);
   fclose(fp);
   fclose(fp2);
+  remove("tmp");
   printf("\nFile saved!");
   return 0;
 }
@@ -56,12 +57,11 @@ int read_file(char * filename) {
 int command_mode(char * filename) {
   printf("You are in command mode. \n");
   char ch1, ch2;
-  scanf("%s", &ch1);
+  read(STDIN_FILENO, &ch1, 1);
   if (ch1 == WRITE_FILE_COMMAND) {
     write_file(filename);
     printf("\nYou have written to a file. Type s to save. \n");
-    int flushinp();
-    scanf("%s", &ch2);
+    read(STDIN_FILENO, &ch2, 1);
     if (ch2 == SAVE_FILE_COMMAND) {
       save_file(filename);
     }

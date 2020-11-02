@@ -2,6 +2,8 @@
 *.o
 # Text files
 *.txt
+# Ignore back up files
+*~
 
 # Executable
 editor
