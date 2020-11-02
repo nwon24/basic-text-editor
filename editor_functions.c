@@ -55,7 +55,7 @@ int read_file(char * filename) {
   return 0;
 }
 int command_mode(char * filename) {
-  printf("You are in command mode.\n");
+  printf("\nYou are in command mode.\n");
   char ch1, ch2;
   read(STDIN_FILENO, &ch1, 1);
   if (ch1 == WRITE_FILE_COMMAND) {
@@ -70,14 +70,15 @@ int command_mode(char * filename) {
     }
   }
 }
-int copy_file(char * filename, char * tmp_file) {
+int copy_file(char * filename) {
   int ch;
-  FILE *fp, * fq;
+  FILE *fp, *fq;
   fp = fopen(filename, "r");
-  fq = fopen(tmp_file, "w");
+  fq = fopen("tmp", "w");
   while ((ch = fgetc(fp)) != EOF) {
     fputc(ch, fq);
   }
-  printf("Copy success!\n");
+  fclose(fp);
+  fclose(fq);
   return 0;
 }
