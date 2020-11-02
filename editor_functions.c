@@ -53,3 +53,21 @@ int read_file(char * filename) {
   fclose(fp);
   return 0;
 }
+int command_mode(char * filename) {
+  printf("You are in command mode. \n");
+  char ch1, ch2;
+  scanf("%s", &ch1);
+  if (ch1 == WRITE_FILE_COMMAND) {
+    write_file(filename);
+    printf("\nYou have written to a file. Type s to save. \n");
+    int flushinp();
+    scanf("%s", &ch2);
+    if (ch2 == SAVE_FILE_COMMAND) {
+      save_file(filename);
+    }
+    else if (ch2 == QUIT_PROGRAM_COMMAND) {
+      exit(0);
+    }
+  }
+}
+    
