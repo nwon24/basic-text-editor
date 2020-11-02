@@ -70,4 +70,14 @@ int command_mode(char * filename) {
     }
   }
 }
-    
+int copy_file(char * filename, char * tmp_file) {
+  int ch;
+  FILE *fp, * fq;
+  fp = fopen(filename, "r");
+  fq = fopen(tmp_file, "w");
+  while ((ch = fgetc(fp)) != EOF) {
+    fputc(ch, fq);
+  }
+  printf("Copy success!\n");
+  return 0;
+}
