@@ -1,6 +1,5 @@
 CC=gcc
 CFLAGS=-I
-TARGET=editor
 editor: main_functions.o main.o
 	$(CC) main.o main_functions.o -o editor
 main_functions.o: main_functions.c
