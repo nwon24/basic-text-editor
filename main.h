@@ -3,10 +3,12 @@
 #include <string.h>
 #include <unistd.h>
 #include <limits.h>
+
 #define WRITE_FILE_COMMAND 'a'
 #define SAVE_FILE_COMMAND 's'
 #define QUIT_PROGRAM_COMMAND 'q'
 #define NEW_LINE_CHAR '\n'
+#define MAX_BUFF_SIZE 100000
 
 
 int read_file(char * filename);
