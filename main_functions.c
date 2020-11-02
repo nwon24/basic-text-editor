@@ -37,10 +37,10 @@ int save_file(char * filename) {
 }
 int read_file(char * filename) {
   FILE *fp;
-  char buff[100000];
+  char buff[MAX_BUFF_SIZE];
   fp = fopen(filename, "a+");
   system("clear");
-  while (fgets(buff,100000,fp)!=NULL) {
+  while (fgets(buff,MAX_BUFF_SIZE,fp)!=NULL) {
     printf("%s",buff);
   }
   fclose(fp);
