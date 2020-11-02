@@ -5,7 +5,7 @@ int write_file(char * filename) {
   char *in_str = malloc(1);
   int c;
   int i = 0;
-  fp = fopen("tmp", "w");
+  fp = fopen("tmp", "a");
   if (!fp) {
     return 1;
   }
@@ -13,7 +13,6 @@ int write_file(char * filename) {
     in_str[i++] = c;
     in_str = realloc(in_str, i+1);
   }
-  printf("End of append!\n");
   in_str[i] = '\0';
   fputs(in_str, fp);
   fclose(fp);
@@ -55,10 +54,11 @@ int read_file(char * filename) {
   return 0;
 }
 int command_mode(char * filename) {
-  printf("\nYou are in command mode.\n");
+  printf("You are in command mode.\n");
   char ch1, ch2;
+  char ch;
   read(STDIN_FILENO, &ch1, 1);
-  if (ch1 == WRITE_FILE_COMMAND) {
+  if (ch1 == WRITE_FILE_COMMAND && (ch = fgetc(stdin) == 0x0A)) {
     write_file(filename);
     printf("You have written to a file. Type s to save and quit, or q to quit without saving.\n");
     read(STDIN_FILENO, &ch2, 1);
@@ -66,6 +66,7 @@ int command_mode(char * filename) {
       save_file(filename);
     }
     else if (ch2 == QUIT_PROGRAM_COMMAND) {
+      remove("tmp");
       exit(0);
     }
   }
