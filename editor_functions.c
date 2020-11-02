@@ -60,7 +60,7 @@ int command_mode(char * filename) {
   read(STDIN_FILENO, &ch1, 1);
   if (ch1 == WRITE_FILE_COMMAND) {
     write_file(filename);
-    printf("\nYou have written to a file. Type s to save.\n");
+    printf("You have written to a file. Type s to save.\n");
     read(STDIN_FILENO, &ch2, 1);
     if (ch2 == SAVE_FILE_COMMAND) {
       save_file(filename);
