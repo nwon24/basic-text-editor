@@ -145,7 +145,8 @@ int insert_text(char * filename, int line) {
   fclose(fp);
   fclose(ft);
   fclose(fq);
-    
+  remove("tmp");
+  remove("tmp2");    
   return 0;
 }
   
