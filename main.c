@@ -9,12 +9,6 @@ int main(int argc, char *argv[]) {
     return 0;
   }
   read_file(argv[1]);
-  int exit = command_mode(argv[1]);
-  read(STDIN_FILENO, &ch, 1);
-  while (ch != QUIT_PROGRAM_COMMAND) {
-    read_file(argv[1]);
-    command_mode(argv[1]);
-    read(STDIN_FILENO, &ch, 1);
-  }
+  command_mode(argv[1]); 
 }
 
