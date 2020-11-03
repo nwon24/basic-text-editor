@@ -61,7 +61,7 @@ int command_mode(char * filename) {
     }
     else if (ch2 == QUIT_PROGRAM_COMMAND) {
       remove("tmp");
-      return 2;
+      exit(1);
     }
   }
 }
