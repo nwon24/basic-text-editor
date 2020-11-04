@@ -12,10 +12,10 @@
 #define DELETE_LINE_COMMAND 'd'
 
 int read_file(char * filename);
-int write_file(char * filename);
+int write_file();
 int save_file(char * filename);
 int command_mode(char * filename);
-int copy_file(char * filename);
+int copy_file(char * filename, char * source);
 int open_file(char * filename);
 int part_copy_top(char * filename, int num);
 int part_copy_bottom(char * filename, int num);
