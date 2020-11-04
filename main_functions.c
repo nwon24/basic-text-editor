@@ -39,11 +39,14 @@ int command_mode(char * filename) {
   while (ch1 != QUIT_PROGRAM_COMMAND) {
     read (STDIN_FILENO, &ch1, 1);
 
-    if (ch1 == WRITE_FILE_COMMAND && (ch1 = fgetc(stdin)) == '\n') {
-      write_file ("tmp");
+    if (ch1 == WRITE_FILE_COMMAND && (ch1 = fgetc (stdin)) == '\n') {
+      write_file ();
       printf ("You have written to a file. Your changes are currently saved in a temporary location. Type s to save.\n");
     }
-    if (ch1 == INSERT_LINE_COMMAND && (ch1 = fgetc(stdin)) == '\n') {
+    if (ch1 == READ_FILE_COMMAND && (ch1 = fgetc (stdin)) == '\n') {
+      read_file (filename);
+    }
+    if (ch1 == INSERT_LINE_COMMAND && (ch1 = fgetc (stdin)) == '\n') {
       printf ("Enter under which line you would like to insert.\n");
       int l;
       scanf ("%d", &l);

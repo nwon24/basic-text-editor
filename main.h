@@ -8,6 +8,7 @@
 #define SAVE_FILE_COMMAND 's'
 #define QUIT_PROGRAM_COMMAND 'q'
 #define INSERT_LINE_COMMAND 'i'
+#define READ_FILE_COMMAND 'r'
 #define MAX_BUFF_SIZE 100000
 #define DELETE_LINE_COMMAND 'd'
 
