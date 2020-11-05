@@ -9,7 +9,7 @@
 #define QUIT_PROGRAM_COMMAND 'q'
 #define INSERT_LINE_COMMAND 'i'
 #define MAX_BUFF_SIZE 100000
-
+#define DELETE_LINE_COMMAND 'd'
 
 int read_file(char * filename);
 int write_file(char * filename);
@@ -20,4 +20,5 @@ int open_file(char * filename);
 int part_copy_top(char * filename, int num);
 int part_copy_bottom(char * filename, int num);
 int insert_text(char * filename, int line);
+int delete_line(char * filename, int line);
 void clear();

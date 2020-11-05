@@ -20,16 +20,12 @@ int save_file(char * filename) {
   FILE *fp;
   FILE *fp2;
   int c;
-  int i = 0;
-  char *w_str = malloc(1);
   fp = fopen("tmp", "r");
-  fp2 = fopen(filename, "a");
+  fp2 = fopen(filename, "w");
   while ((c = fgetc(fp)) != EOF) {
-    w_str[i++] = c;
-    w_str = realloc(w_str, i+1);
+    fputc(c, fp2);
   }
-  w_str[i] = '\0';
-  fputs(w_str, fp2);
+
   fclose(fp);
   fclose(fp2);
   remove("tmp");
@@ -66,6 +62,13 @@ int command_mode(char * filename) {
       printf("Inserted! Press s to save!\n");
       continue;
     }
+    if (ch1 == DELETE_LINE_COMMAND && (ch1 = fgetc(stdin)) == '\n') {
+      printf("Enter the line which you want to delete:\n");
+      int l;
+      scanf("%d", &l);
+      delete_line(filename, l);
+      printf("Deleted! Press s to save!\n");
+    }  
     if (ch1 == SAVE_FILE_COMMAND) {
 
       save_file(filename);
@@ -129,24 +132,29 @@ int insert_text(char * filename, int line) {
   part_copy_top(filename, line);
   part_copy_bottom(filename, line);
   write_file("tmp");
-  FILE *fp, *ft, *fq;
-  ft = fopen("tmp", "r");
+  FILE *ft, *fq;
+  ft = fopen("tmp", "a");
   fq = fopen("tmp2", "r");
-  fp = fopen(filename, "w");
   char ch;
-  while ((ch = fgetc(ft)) != EOF) {
-    fputc(ch, fp);
+  while ((ch = fgetc(fq)) != EOF) {
+    fputc(ch, ft);
   }
-  fclose(fp);
-  fp = fopen(filename, "a");
+  fclose(fq);
+  fclose(ft);
+  return 0;
+}
+int delete_line(char * filename, int line) {
+  part_copy_top(filename, line - 1);
+  part_copy_bottom(filename, line);
+  FILE *fp, *fq;
+  fp = fopen("tmp", "a");
+  fq = fopen("tmp2", "r");
+  char ch;
   while ((ch = fgetc(fq)) != EOF) {
     fputc(ch, fp);
   }
-  fclose(fp);
-  fclose(ft);
   fclose(fq);
-  remove("tmp");
-  remove("tmp2");    
+  fclose(fp);
+  return 0;
   return 0;
 }
-  
