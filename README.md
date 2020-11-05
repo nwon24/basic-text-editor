@@ -2,3 +2,5 @@ Basic text editor written in C. At the moment, it has only very basic functional
 
 If you are using GCC, just run `make` to create the executable, which will be called "editor".
 To use the text editor, run executable and provide the name of the file. For example, in Bash with executable in current directory, do `./editor FILENAME`. To append text, type in `a`, then `Enter`. Write any text, and to signify EOF, use appropriate EOF sequence. For example, in Bash, it will be `Ctrl-d`, while in cmd, it is `Ctrl-z` then `Enter`.
+It will then prompt you to save. Type in 's' and then 'Enter'. At this point, type in 'q' and then 'Enter' to exit the program. At the moment, the program has a few bugs that preven it from looping the command mode such that you can keep typing in commands until you press 'q' to quit. If you can issue another command without quitting first and then re-entering the program, such as the append command, it is likely what you append will overwrite your existing file. 
+Other commands include 'i' and 'd' to insert and delete lines respectively. Just as with append, you should quit out of the program after using the command and saving.
