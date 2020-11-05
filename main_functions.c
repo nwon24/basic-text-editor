@@ -6,7 +6,7 @@ int write_file(char * filename) {
   int c;
   int i = 0;
   printf("Append mode!\n");
-  fp = fopen("tmp", "a");
+  fp = fopen(filename, "a");
   while ((c = fgetc(stdin)) != EOF) {
     in_str[i++] = c;
     in_str = realloc(in_str, i+1);
@@ -50,7 +50,7 @@ int command_mode(char * filename) {
     read(STDIN_FILENO, &ch1, 1);
 
     if (ch1 == WRITE_FILE_COMMAND && (ch1 = fgetc(stdin)) == '\n') {
-      write_file(filename);
+      write_file("tmp");
       printf("You have written to a file. Your changes are currently saved in a temporary location. Type s to save.\n");
     }
     if (ch1 == INSERT_LINE_COMMAND && (ch1 = fgetc(stdin)) == '\n') {
