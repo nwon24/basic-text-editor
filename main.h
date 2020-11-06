@@ -22,4 +22,4 @@ int part_copy_top(char * filename, int num);
 int part_copy_bottom(char * filename, int num);
 int insert_text(char * filename, int line);
 int delete_line(char * filename, int line);
-void clear();
+
