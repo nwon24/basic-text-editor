@@ -12,5 +12,6 @@ int main (int argc, char *argv[]) {
   command_mode (argv[1]);
   remove("tmp");
   remove("tmp2");
+
 }
 
