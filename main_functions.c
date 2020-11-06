@@ -124,7 +124,7 @@ int part_copy_bottom (char * filename, int num) {
 int insert_text (char * filename, int line) {
   part_copy_top (filename, line);
   part_copy_bottom (filename, line);
-  write_file ("tmp");
+  write_file ();
   FILE *ft, *fq;
   ft = fopen ("tmp", "a");
   fq = fopen ("tmp2", "r");
