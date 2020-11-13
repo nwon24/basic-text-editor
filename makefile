@@ -1,9 +1,9 @@
 CC=gcc
-CFLAGS=-I
-editor: main_functions.o main.o 
-	$(CC) main.o main_functions.o $(CFLAGS) -o editor
-main_functions.o: main_functions.c
-	$(CC) -c main_functions.c
+CFLAGS=-I -std=c99
+editor: functions.o main.o 
+	$(CC) main.o functions.o $(CFLAGS) -o editor
+functions.o: functions.c
+	$(CC) -c functions.c
 main.o: main.c
 	$(CC) -c main.c
 clean:
