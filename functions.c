@@ -32,7 +32,7 @@ int read_file(char * filename)
  	system("clear");
   	while (fgets(buff,MAX_BUFF_SIZE,fp) != NULL) {
     		printf("%s", buff);
-  	}
+	}
   	fclose(fp);
   	return 0;
 }
@@ -71,18 +71,21 @@ int command_mode(char * filename)
     		}
   	}
 }
+
 int copy_file(char * filename, char * source)
 (
   	int ch;
   	FILE *fp, *fq;
   	fp = fopen(filename, "r");
   	fq = fopen(source, "w");
-  	while ((ch = fgetc(fp)) != EOF)
+  	while ((ch = fgetc(fp)) != EOF) {
     		fputc(ch, fq);
+	}
   	fclose(fp);
   	fclose(fq);
   	return 0;
 }
+
 int part_copy_top(char * filename, int num)
 (
   	int nl = 0;
@@ -95,13 +98,14 @@ int part_copy_top(char * filename, int num)
     		if (ch == '\n') {
       			++nl;
     		}
-    	fputc(ch, fp);
+    		fputc(ch, fp);
   	}
     
   	fclose(fp);
   	fclose(fq);
   	return num;
 }
+
 int part_copy_bottom(char * filename, int num)
 (
   	int nl = 0;
@@ -109,21 +113,21 @@ int part_copy_bottom(char * filename, int num)
   	FILE *fp, *fq;
   	fq = fopen(filename, "r");
   	fp = fopen("tmp2", "w");
-  	while (nl < num) {
+  	while (nl < num) { 
     		ch = fgetc(fq);
     		if (ch == '\n') {
       
       			++nl;
     		}
  	}
-  	while ((ch = fgetc(fq)) != EOF)
+  	while ((ch = fgetc(fq)) != EOF) {
     		fputc (ch, fp);
+	}
    	fclose(fp);
-  	fclose(fq);
-  
-    
- 	 return 0;
+ 	fclose(fq);
+	return 0;
 }
+
 int insert_text(char * filename, int line)
 (
   	part_copy_top(filename, line);
@@ -140,16 +144,18 @@ int insert_text(char * filename, int line)
   	fclose(ft);
   	return 0;
 }
+
 int delete_line(char * filename, int line)
 (
-  	part_copy_top(filename, line - 1);
+   	part_copy_top(filename, line - 1);
   	part_copy_bottom(filename, line);
   	FILE *fp, *fq;
   	fp = fopen("tmp", "a");
   	fq = fopen("tmp2", "r");
  	char ch;
-  	while ((ch = fgetc (fq)) != EOF)
+  	while ((ch = fgetc (fq)) != EOF) {
     		fputc(ch, fp);
+	}
   	fclose(fq);
   	fclose(fp);
   	return 0;
