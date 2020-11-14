@@ -52,11 +52,13 @@ int command_mode(char * filename)
     		}
     		if (ch1 == INSERT_LINE_COMMAND && (ch1 = fgetc(stdin)) == '\n') {
       			printf("Enter under which line you would like to insert.\n");
-      			int l;
+            int l;
       			scanf("%d", &l);
-      	
-        		insert_text(filename, l);
-      			printf("Inserted! Press s to save!\n");
+            char ch;
+            if ((ch = getchar()) == '\n') {  
+        		    insert_text(filename, l);
+      			    printf("Inserted! Press s to save!\n");
+            }
     		}
     		if (ch1 == DELETE_LINE_COMMAND && (ch1 = fgetc(stdin)) == '\n') {
       			printf ("Enter the line which you want to delete:\n");
