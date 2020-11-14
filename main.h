@@ -11,6 +11,7 @@
 #define READ_FILE_COMMAND 'r'
 #define MAX_BUFF_SIZE 100000
 #define DELETE_LINE_COMMAND 'd'
+#define CHANGE_LINE_COMMAND 'c'
 
 int read_file(char * filename);
 int write_file();
@@ -22,4 +23,6 @@ int part_copy_top(char * filename, int num);
 int part_copy_bottom(char * filename, int num);
 int insert_text(char * filename, int line);
 int delete_line(char * filename, int line);
+int change_line(char *filename, int line);
+
 

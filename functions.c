@@ -61,12 +61,22 @@ int command_mode(char * filename)
             }
     		}
     		if (ch1 == DELETE_LINE_COMMAND && (ch1 = fgetc(stdin)) == '\n') {
-      			printf ("Enter the line which you want to delete:\n");
+      			printf("Enter the line which you want to delete:\n");
       			int l;
       			scanf("%d", &l);
       			delete_line(filename, l);
       			printf("Deleted! Press s to save!\n");
     		}  
+			if (ch1 == CHANGE_LINE_COMMAND && (ch1 = fgetc(stdin)) == '\n') {
+				printf("Enter the line which you want to change.\n");
+				int l;
+				scanf("%d", &l);
+				char ch;
+				if ((ch = fgetc(stdin)) != EOF) {
+					change_line(filename, l);
+					printf("Line changed! Press s to save!\n");
+				}
+			}
     		if (ch1 == SAVE_FILE_COMMAND) {
 
       			save_file(filename);
@@ -162,3 +172,21 @@ int delete_line(char * filename, int line)
   	fclose(fp);
   	return 0;
 }	
+
+int change_line(char *filename, int line)
+{
+	part_copy_top(filename, line - 1);
+	part_copy_bottom(filename, line);
+	FILE *fp, *fq;
+	fp = fopen("tmp", "a");
+	fq = fopen("tmp2", "r");
+	write_file();
+	char ch;
+	while ((ch = fgetc(fq)) != EOF) {
+		fputc(ch, fp);
+	}
+	fclose(fq);
+	fclose(fp);
+	return 0;
+	
+}
