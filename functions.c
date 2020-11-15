@@ -18,13 +18,13 @@ int write_file()
   	fclose(fp);
   	return 0;
 }
-int save_file(char * filename)
+int save_file(char *filename)
 {
   	copy_file("tmp", filename);
   	printf("File saved!\n");
   	return 0;
 }
-int read_file(char * filename)
+int read_file(char *filename)
 {
   	FILE *fp;
   	char buff[MAX_BUFF_SIZE];
@@ -36,7 +36,7 @@ int read_file(char * filename)
   	fclose(fp);
   	return 0;
 }
-int command_mode(char * filename)
+int command_mode(char *filename)
 {
   	printf("You are in command mode.\n");
   	char ch1;
@@ -84,7 +84,7 @@ int command_mode(char * filename)
   	}
 }
 
-int copy_file(char * filename, char * source)
+int copy_file(char *filename, char *source)
 {
   	int ch;
   	FILE *fp, *fq;
@@ -98,7 +98,7 @@ int copy_file(char * filename, char * source)
   	return 0;
 }
 
-int part_copy_top(char * filename, int num)
+int part_copy_top(char *filename, int num)
 {
   	int nl = 0;
   	char ch;
@@ -118,7 +118,7 @@ int part_copy_top(char * filename, int num)
   	return num;
 }
 
-int part_copy_bottom(char * filename, int num)
+int part_copy_bottom(char *filename, int num)
 {
   	int nl = 0;
   	char ch;
@@ -140,7 +140,7 @@ int part_copy_bottom(char * filename, int num)
 	return 0;
 }
 
-int insert_text(char * filename, int line)
+int insert_text(char *filename, int line)
 {
   	part_copy_top(filename, line);
   	part_copy_bottom(filename, line);
@@ -157,7 +157,7 @@ int insert_text(char * filename, int line)
   	return 0;
 }
 
-int delete_line(char * filename, int line)
+int delete_line(char *filename, int line)
 {
    	part_copy_top(filename, line - 1);
   	part_copy_bottom(filename, line);
