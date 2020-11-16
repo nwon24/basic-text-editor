@@ -1,4 +1,4 @@
-#include "main.h"
+#include "edit.h"
 
 /* main text editor function */
 int main (int argc, char *argv[])
