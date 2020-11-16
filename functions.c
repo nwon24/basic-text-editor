@@ -1,4 +1,4 @@
-#include "main.h"
+#include "edit.h"
 /* core functions for text editor */
 
 int write_file()
