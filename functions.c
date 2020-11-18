@@ -11,7 +11,7 @@ int write_file()
   	fp = fopen("tmp", "a");
   	while ((c = fgetc(stdin)) != EOF) {
     		in_str[i++] = c;
-    		in_str = realloc (in_str, i+1);
+    		in_str = realloc(in_str, i+1);
   	}
   	in_str[i] = '\0';
   	fputs(in_str, fp);
